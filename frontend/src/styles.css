@@ -1,0 +1,2777 @@
+:root {
+  --avatar-bg: #fff0df;
+  --avatar-text: #9a4d13;
+  --bg: #eef3f7;
+  --border: #dbe4ea;
+  --border-strong: #c7d4dd;
+  --danger: #d33f49;
+  --danger-soft: #ffe9eb;
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-muted: rgba(255, 255, 255, 0.48);
+  --info: #2563eb;
+  --info-soft: #eaf1ff;
+  --muted: #637381;
+  --muted-strong: #394956;
+  --on-primary: #ffffff;
+  --primary: #0f766e;
+  --primary-hover: #0b625d;
+  --primary-soft: #e2f6f2;
+  --rating-bg: #fff6d7;
+  --rating-border: #f2d36b;
+  --secondary-bg: #102a43;
+  --secondary-text: #ffffff;
+  --shadow: 0 18px 45px rgba(29, 47, 62, 0.1);
+  --shadow-soft: 0 10px 28px rgba(29, 47, 62, 0.08);
+  --surface: #ffffff;
+  --surface-muted: #f5f8fa;
+  --surface-soft: #fbfdfe;
+  --text: #14212b;
+  --warning: #d97706;
+  --warning-fill: #fbbf24;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+:root[data-theme='dark'] {
+  --avatar-bg: #32241b;
+  --avatar-text: #ffc58b;
+  --bg: #0e171d;
+  --border: #293b45;
+  --border-strong: #3d505a;
+  --danger: #fb7185;
+  --danger-soft: #3a1820;
+  --glass: rgba(22, 34, 41, 0.68);
+  --glass-muted: rgba(28, 43, 51, 0.54);
+  --info: #8bb5ff;
+  --info-soft: #17284d;
+  --muted: #98aab5;
+  --muted-strong: #d3dee5;
+  --on-primary: #062422;
+  --primary: #2dd4bf;
+  --primary-hover: #5eead4;
+  --primary-soft: #123d38;
+  --rating-bg: #32290f;
+  --rating-border: #735818;
+  --secondary-bg: #d7e5eb;
+  --secondary-text: #10202a;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.25);
+  --surface: #162229;
+  --surface-muted: #1c2b33;
+  --surface-soft: #101b21;
+  --text: #eff7fb;
+  --warning: #fbbf24;
+  --warning-fill: #facc15;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    linear-gradient(115deg, color-mix(in srgb, var(--primary) 16%, transparent), transparent 34%),
+    linear-gradient(245deg, color-mix(in srgb, var(--info) 12%, transparent), transparent 42%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 42%, transparent), transparent 320px),
+    var(--bg);
+  margin: 0;
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  margin: 0 auto;
+  max-width: 1500px;
+  min-height: 100vh;
+  padding: 22px 24px 30px;
+}
+
+.topbar {
+  align-items: center;
+  backdrop-filter: blur(24px) saturate(150%);
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--surface) 62%, transparent), color-mix(in srgb, var(--surface) 24%, transparent)),
+    var(--glass);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 18px;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  min-width: 0;
+}
+
+.brand-mark {
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--info));
+  border: 1px solid color-mix(in srgb, var(--primary) 34%, var(--surface));
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  color: var(--on-primary);
+  display: inline-flex;
+  flex: 0 0 52px;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+
+.brand p,
+.doctor-profile p,
+.panel-title p,
+.section-heading p,
+.appointments-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.brand h1,
+.doctor-profile h2,
+.section-heading h2,
+.panel-title h2,
+.appointments-heading h2,
+.form-heading h3,
+.slots-heading h3 {
+  color: var(--text);
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.08;
+}
+
+.brand span {
+  color: var(--muted);
+  display: block;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.topbar-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.status-pill,
+.theme-toggle {
+  backdrop-filter: blur(20px) saturate(140%);
+  background: var(--glass);
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.status-pill {
+  align-items: center;
+  border-radius: 999px;
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 800;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+.theme-toggle {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 4px;
+  min-height: 40px;
+  padding: 4px;
+}
+
+.theme-toggle span {
+  align-items: center;
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  width: 34px;
+}
+
+.theme-toggle span.is-active {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.workspace {
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+}
+
+.filters-panel,
+.doctor-list,
+.details-panel,
+.appointments-panel {
+  backdrop-filter: blur(24px) saturate(145%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 26%, transparent), transparent),
+    var(--glass);
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.filters-panel,
+.details-panel,
+.appointments-panel {
+  padding: 18px;
+}
+
+.details-panel {
+  position: sticky;
+  top: 18px;
+}
+
+.search-panel {
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 210px minmax(0, 1fr);
+  margin-bottom: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-panel::after {
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 22%, transparent), transparent);
+  content: "";
+  height: 1px;
+  inset: auto 18px 0;
+  position: absolute;
+}
+
+.filter-mobile-trigger,
+.filter-close-button {
+  display: none;
+}
+
+.panel-title,
+.section-heading,
+.doctor-profile,
+.profile-grid span,
+.doctor-card,
+.doctor-meta span,
+.slot,
+.lookup-form,
+.appointment-card,
+.appointments-heading,
+.label-with-icon,
+.doctor-tags span,
+.appointment-empty {
+  align-items: center;
+  display: flex;
+}
+
+.panel-title {
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.search-panel .panel-title {
+  margin-bottom: 0;
+}
+
+.panel-title-stacked {
+  align-items: flex-start;
+}
+
+.panel-icon {
+  align-items: center;
+  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, var(--border));
+  border-radius: 8px;
+  color: var(--primary);
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.panel-title h2,
+.section-heading h2,
+.appointments-heading h2 {
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+label {
+  color: var(--muted-strong);
+  display: grid;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.filter-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.filter-grid > label {
+  grid-column: span 2;
+  margin: 0;
+  min-width: 0;
+}
+
+.filter-grid .filter-query {
+  grid-column: span 3;
+}
+
+.filter-trigger-label {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.filter-count {
+  align-items: center;
+  background: var(--primary);
+  border-radius: 999px;
+  color: var(--on-primary);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 950;
+  height: 26px;
+  justify-content: center;
+  min-width: 26px;
+  padding: 0 8px;
+}
+
+.label-with-icon {
+  gap: 6px;
+}
+
+input,
+select,
+textarea {
+  background: color-mix(in srgb, var(--surface-soft) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-strong) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border-radius: 8px;
+  color: var(--text);
+  min-height: 44px;
+  outline: none;
+  padding: 11px 12px;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+  width: 100%;
+}
+
+textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(in srgb, var(--muted) 76%, transparent);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.primary-button,
+.secondary-button,
+.icon-button {
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 8px;
+  justify-content: center;
+  min-height: 44px;
+  transition:
+    transform 0.16s ease,
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.primary-button {
+  background: var(--primary);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--primary) 24%, transparent);
+  color: var(--on-primary);
+  padding: 10px 16px;
+  width: 100%;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.filter-actions {
+  align-self: end;
+  display: grid;
+  gap: 10px;
+  grid-column: span 3;
+  grid-template-columns: 1fr auto;
+}
+
+.secondary-button {
+  background: var(--secondary-bg);
+  color: var(--secondary-text);
+  padding: 10px 16px;
+}
+
+.ghost-button {
+  background: color-mix(in srgb, var(--surface) 54%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-strong) 84%, transparent);
+  border-radius: 8px;
+  color: var(--muted-strong);
+  font-weight: 900;
+  min-height: 44px;
+  padding: 10px 14px;
+}
+
+.ghost-button:hover:not(:disabled) {
+  background: var(--glass-muted);
+  color: var(--text);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.icon-button:disabled,
+.ghost-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.doctor-list {
+  min-height: 690px;
+  overflow: hidden;
+}
+
+.section-heading {
+  border-bottom: 1px solid var(--border);
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.section-heading span,
+.appointments-heading span,
+.slots-heading span {
+  align-items: center;
+  background: var(--primary-soft);
+  border-radius: 999px;
+  color: var(--primary);
+  display: inline-flex;
+  font-weight: 900;
+  height: 30px;
+  justify-content: center;
+  min-width: 36px;
+  padding: 0 10px;
+}
+
+.cards-flow {
+  display: grid;
+  gap: 12px;
+  max-height: 632px;
+  overflow: auto;
+  padding: 14px;
+}
+
+.cards-flow::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cards-flow::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+.doctor-card {
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--surface) 68%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 8px;
+  color: inherit;
+  gap: 14px;
+  min-height: 112px;
+  padding: 16px;
+  position: relative;
+  text-align: left;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.16s ease;
+  width: 100%;
+}
+
+.doctor-card:hover {
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.doctor-card.is-active {
+  border-color: var(--primary);
+  box-shadow:
+    inset 4px 0 0 var(--primary),
+    var(--shadow-soft);
+}
+
+.avatar,
+.profile-avatar {
+  align-items: center;
+  background: var(--avatar-bg);
+  border: 1px solid color-mix(in srgb, var(--avatar-text) 18%, transparent);
+  border-radius: 8px;
+  color: var(--avatar-text);
+  display: inline-flex;
+  font-weight: 950;
+  justify-content: center;
+}
+
+.avatar {
+  flex: 0 0 54px;
+  height: 54px;
+  width: 54px;
+}
+
+.doctor-main {
+  display: grid;
+  flex: 1;
+  gap: 5px;
+  min-width: 0;
+}
+
+.doctor-main strong {
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.18;
+}
+
+.doctor-kicker {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.doctor-main small {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  gap: 5px;
+  overflow-wrap: anywhere;
+}
+
+.doctor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.doctor-tags span {
+  background: color-mix(in srgb, var(--surface-muted) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 999px;
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 800;
+  gap: 5px;
+  min-height: 28px;
+  padding: 5px 9px;
+}
+
+.doctor-meta {
+  align-self: flex-start;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.doctor-meta span {
+  background: var(--rating-bg);
+  border: 1px solid var(--rating-border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 950;
+  gap: 5px;
+  padding: 7px 9px;
+  white-space: nowrap;
+}
+
+.doctor-meta svg,
+.rating-badge svg {
+  color: var(--warning);
+  fill: var(--warning-fill);
+}
+
+.details-panel {
+  min-height: 690px;
+}
+
+.doctor-profile {
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.profile-avatar {
+  flex: 0 0 58px;
+  font-size: 18px;
+  height: 58px;
+  width: 58px;
+}
+
+.profile-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-heading h2 {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.profile-heading span {
+  color: var(--muted);
+  display: block;
+  margin-top: 4px;
+}
+
+.rating-badge {
+  align-items: center;
+  background: var(--rating-bg);
+  border: 1px solid var(--rating-border);
+  border-radius: 999px;
+  color: var(--text);
+  display: inline-flex;
+  font-weight: 950;
+  gap: 5px;
+  padding: 8px 11px;
+}
+
+.profile-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 16px;
+}
+
+.profile-grid span {
+  background: color-mix(in srgb, var(--surface-muted) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 8px;
+  color: var(--muted-strong);
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 11px;
+}
+
+.profile-grid span:first-child,
+.profile-grid span:last-child {
+  grid-column: 1 / -1;
+}
+
+.slots-heading,
+.form-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 10px;
+}
+
+.slots-heading h3,
+.form-heading h3 {
+  font-size: 16px;
+}
+
+.slots-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  margin: 3px 0 0;
+}
+
+.slots {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  margin-bottom: 18px;
+}
+
+.slot {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-strong) 80%, transparent);
+  border-radius: 8px;
+  color: var(--text);
+  gap: 7px;
+  justify-content: center;
+  min-height: 56px;
+}
+
+.slot span {
+  display: grid;
+  gap: 2px;
+  line-height: 1.05;
+  text-align: left;
+}
+
+.slot strong {
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.slot small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.slot:hover {
+  border-color: var(--primary);
+}
+
+.slot.is-selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.slot.is-selected small {
+  color: color-mix(in srgb, var(--on-primary) 76%, transparent);
+}
+
+.appointment-form {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-grid .is-wide {
+  grid-column: 1 / -1;
+}
+
+.appointments-panel {
+  align-items: end;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  margin-top: 18px;
+}
+
+.appointments-heading {
+  align-self: center;
+  justify-content: space-between;
+}
+
+.lookup-form {
+  background: var(--glass-muted);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin: 0;
+  padding: 12px;
+}
+
+.lookup-form label {
+  flex: 1;
+  margin: 0;
+}
+
+.lookup-form .secondary-button {
+  align-self: end;
+  min-width: 170px;
+}
+
+.appointment-list {
+  display: grid;
+  gap: 10px;
+  grid-column: 1 / -1;
+}
+
+.appointment-empty {
+  background: var(--glass-muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 850;
+  gap: 8px;
+  justify-content: center;
+  min-height: 70px;
+  padding: 16px;
+}
+
+.appointment-card {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 8px;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 13px;
+}
+
+.appointment-card div {
+  display: grid;
+  gap: 4px;
+}
+
+.appointment-card span {
+  color: var(--muted);
+}
+
+.status {
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 7px 10px;
+  text-transform: uppercase;
+}
+
+.status.scheduled {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.status.cancelled {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.status.completed {
+  background: color-mix(in srgb, var(--info) 16%, transparent);
+  color: var(--muted-strong);
+}
+
+.icon-button {
+  background: var(--glass-muted);
+  border: 1px solid var(--border);
+  color: var(--danger);
+  flex: 0 0 40px;
+  padding: 0;
+  width: 40px;
+}
+
+.empty-state {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 420px;
+  text-align: center;
+}
+
+.toast {
+  background: var(--primary);
+  border-radius: 8px;
+  bottom: 24px;
+  box-shadow: var(--shadow);
+  color: var(--on-primary);
+  font-weight: 900;
+  left: 50%;
+  max-width: min(520px, calc(100vw - 32px));
+  padding: 13px 16px;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.toast.error {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+@media (max-width: 1180px) {
+  .filter-mobile-trigger {
+    align-items: center;
+    background: var(--glass);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 76%, transparent);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    display: flex;
+    font-size: 15px;
+    font-weight: 950;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    min-height: 52px;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  .filter-mobile-trigger:hover {
+    border-color: color-mix(in srgb, var(--primary) 42%, var(--border-strong));
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .details-panel {
+    grid-column: 1 / -1;
+    position: static;
+  }
+
+  .search-panel {
+    display: none;
+    grid-template-columns: 1fr;
+    margin-bottom: 18px;
+  }
+
+  .search-panel.is-open {
+    display: grid;
+  }
+
+  .search-panel .panel-title {
+    padding-right: 46px;
+  }
+
+  .filter-close-button {
+    align-items: center;
+    background: var(--glass-muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    display: inline-flex;
+    height: 36px;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 36px;
+    z-index: 1;
+  }
+
+  .filter-grid > label,
+  .filter-grid .filter-query,
+  .filter-actions {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .topbar-actions {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .status-pill {
+    justify-content: center;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .details-panel {
+    position: static;
+  }
+
+  .doctor-list,
+  .details-panel {
+    min-height: auto;
+  }
+
+  .cards-flow {
+    max-height: none;
+  }
+
+  .doctor-card {
+    align-items: flex-start;
+    min-height: 0;
+  }
+
+  .doctor-meta {
+    justify-items: start;
+  }
+
+  .profile-grid,
+  .form-grid,
+  .filter-grid,
+  .filter-actions,
+  .appointments-panel,
+  .lookup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-grid > label,
+  .filter-grid .filter-query,
+  .filter-actions {
+    grid-column: auto;
+  }
+
+  .profile-grid span {
+    grid-column: 1 / -1;
+  }
+
+  .appointment-card {
+    align-items: stretch;
+    display: grid;
+  }
+
+  .lookup-form .secondary-button {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Reference-inspired redesign */
+:root[data-theme='dark'] {
+  --avatar-bg: #16b46f;
+  --avatar-text: #ffffff;
+  --bg: #070c1a;
+  --border: #24334f;
+  --border-strong: #394d6a;
+  --danger: #ff5d7a;
+  --danger-soft: rgba(255, 93, 122, 0.14);
+  --glass: rgba(16, 26, 47, 0.78);
+  --glass-muted: rgba(7, 12, 26, 0.72);
+  --info: #9fb5d5;
+  --info-soft: rgba(159, 181, 213, 0.16);
+  --muted: #909bb0;
+  --muted-strong: #c9d2e5;
+  --on-primary: #ffffff;
+  --page-end: #24194f;
+  --page-mid: #111936;
+  --page-start: #050a16;
+  --primary: #16b46f;
+  --primary-hover: #22c782;
+  --primary-soft: rgba(22, 180, 111, 0.16);
+  --rating-bg: rgba(255, 190, 79, 0.12);
+  --rating-border: rgba(255, 190, 79, 0.34);
+  --secondary-bg: #dfe8f6;
+  --secondary-text: #101827;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
+  --shadow-soft: 0 18px 46px rgba(0, 0, 0, 0.22);
+  --surface: #111b30;
+  --surface-muted: #17233b;
+  --surface-soft: #080f1e;
+  --text: #f8fbff;
+  --warning: #ffc15a;
+  --warning-fill: #ffc15a;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --avatar-bg: #e7fff1;
+  --avatar-text: #0d8f54;
+  --bg: #eef3fb;
+  --border: #d4deeb;
+  --border-strong: #b8c7d8;
+  --danger: #d93659;
+  --danger-soft: #ffe6eb;
+  --glass: rgba(255, 255, 255, 0.78);
+  --glass-muted: rgba(255, 255, 255, 0.58);
+  --info: #4f6d95;
+  --info-soft: #e8eef7;
+  --muted: #667085;
+  --muted-strong: #334155;
+  --on-primary: #ffffff;
+  --page-end: #dfe8f7;
+  --page-mid: #eef3fb;
+  --page-start: #f8fbff;
+  --primary: #0f9f5f;
+  --primary-hover: #0b864f;
+  --primary-soft: #dff7ea;
+  --rating-bg: #fff6df;
+  --rating-border: #f3d07a;
+  --secondary-bg: #101827;
+  --secondary-text: #ffffff;
+  --shadow: 0 24px 60px rgba(42, 58, 82, 0.14);
+  --shadow-soft: 0 16px 38px rgba(42, 58, 82, 0.12);
+  --surface: #ffffff;
+  --surface-muted: #f4f7fb;
+  --surface-soft: #ffffff;
+  --text: #111827;
+  --warning: #d99014;
+  --warning-fill: #f9b540;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(125deg, var(--page-start) 0%, var(--page-mid) 52%, var(--page-end) 100%),
+    var(--bg);
+  overflow-x: hidden;
+}
+
+body::before {
+  background:
+    linear-gradient(90deg, rgba(255, 63, 101, 0.08), transparent 28%, rgba(159, 181, 213, 0.08) 70%, transparent),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 260px);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+}
+
+.app-shell {
+  max-width: 1540px;
+  padding: 28px 32px 42px;
+  position: relative;
+  z-index: 0;
+}
+
+.topbar {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  margin: 0 auto 30px;
+  padding: 10px 0 0;
+  text-align: center;
+}
+
+.topbar-actions {
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.status-pill,
+.theme-toggle {
+  background: rgba(3, 7, 15, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  min-height: 48px;
+}
+
+:root[data-theme='light'] .status-pill,
+:root[data-theme='light'] .theme-toggle {
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(59, 74, 96, 0.16);
+}
+
+.status-pill {
+  color: var(--muted-strong);
+  font-weight: 950;
+  padding: 10px 18px;
+}
+
+.status-pill svg {
+  color: var(--primary);
+}
+
+.theme-toggle {
+  padding: 5px;
+}
+
+.theme-toggle span {
+  height: 36px;
+  width: 38px;
+}
+
+.theme-toggle span.is-active {
+  background: color-mix(in srgb, var(--primary) 92%, #ffffff 8%);
+  color: #ffffff;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brand-mark {
+  background:
+    linear-gradient(135deg, rgba(255, 63, 101, 0.26), rgba(159, 181, 213, 0.22)),
+    rgba(8, 14, 27, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    inset 0 0 22px rgba(255, 63, 101, 0.2);
+  color: var(--primary);
+  flex-basis: 52px;
+  height: 52px;
+  width: 52px;
+}
+
+:root[data-theme='light'] .brand-mark {
+  background: linear-gradient(135deg, #ffffff, #edf3fb);
+  border-color: rgba(59, 74, 96, 0.14);
+}
+
+.brand p {
+  color: var(--info);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.brand h1 {
+  color: var(--text);
+  font-size: clamp(38px, 5.4vw, 64px);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: clamp(15px, 1.8vw, 19px);
+  font-weight: 750;
+  margin-top: 6px;
+}
+
+.top-tabs {
+  align-items: center;
+  background: color-mix(in srgb, var(--surface) 44%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.top-tabs a {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--muted-strong);
+  font-size: 16px;
+  font-weight: 950;
+  min-width: 150px;
+  padding: 13px 24px;
+  text-decoration: none;
+}
+
+.top-tabs a:hover,
+.top-tabs a.is-active {
+  background: color-mix(in srgb, var(--info) 22%, transparent);
+  border-color: color-mix(in srgb, var(--info) 28%, var(--border));
+  color: var(--text);
+}
+
+.filters-panel,
+.details-panel,
+.appointments-panel {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-soft) 72%, transparent)),
+    var(--glass);
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.search-panel {
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0 auto 28px;
+  max-width: 1320px;
+}
+
+.search-panel .panel-title {
+  display: none;
+}
+
+.search-panel::after {
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 58%, transparent), transparent);
+}
+
+.panel-icon {
+  background: color-mix(in srgb, var(--info) 18%, transparent);
+  border-color: color-mix(in srgb, var(--info) 26%, var(--border));
+  color: var(--info);
+}
+
+label {
+  color: var(--muted-strong);
+  font-weight: 900;
+}
+
+input,
+select,
+textarea {
+  background: color-mix(in srgb, var(--surface-soft) 86%, transparent);
+  border-color: color-mix(in srgb, var(--border-strong) 78%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  min-height: 50px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background: color-mix(in srgb, var(--surface-soft) 96%, transparent);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--primary) 20%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button,
+.icon-button {
+  min-height: 50px;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--primary) 26%, transparent);
+  color: #ffffff;
+}
+
+.secondary-button {
+  background: linear-gradient(135deg, var(--secondary-bg), color-mix(in srgb, var(--secondary-bg) 78%, var(--info)));
+}
+
+.ghost-button {
+  background: color-mix(in srgb, var(--surface-muted) 68%, transparent);
+  color: var(--muted-strong);
+}
+
+.filter-actions {
+  gap: 12px;
+}
+
+.workspace {
+  gap: 30px;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 430px);
+}
+
+.doctor-list {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: 0;
+}
+
+.section-heading {
+  border: 0;
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+
+.section-heading h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 950;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.section-heading span,
+.appointments-heading span,
+.slots-heading span {
+  background: color-mix(in srgb, var(--info) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--info) 18%, var(--border));
+  color: var(--muted-strong);
+}
+
+.cards-flow {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+}
+
+.doctor-card {
+  --card-accent: #7d8eab;
+  align-items: start;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-soft) 74%, transparent)),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--border) 86%, transparent);
+  box-shadow: none;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 256px;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.doctor-card::before {
+  background: var(--card-accent);
+  content: "";
+  inset: 0 auto 0 0;
+  position: absolute;
+  width: 5px;
+}
+
+.doctor-card:hover {
+  border-color: color-mix(in srgb, var(--info) 40%, var(--border));
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+.doctor-card.is-active {
+  --card-accent: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 48%, var(--border));
+  box-shadow:
+    inset 5px 0 0 var(--primary),
+    0 22px 52px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.avatar {
+  border: 0;
+  color: var(--avatar-text);
+  flex-basis: 56px;
+  font-size: 15px;
+  height: 36px;
+  width: 56px;
+}
+
+.doctor-main {
+  gap: 8px;
+  grid-column: 2 / -1;
+}
+
+.doctor-kicker {
+  color: var(--muted);
+  font-size: 14px;
+  text-transform: none;
+}
+
+.doctor-main strong {
+  color: var(--text);
+  font-size: clamp(24px, 2.3vw, 34px);
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.doctor-main small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.doctor-tags {
+  background: rgba(3, 7, 15, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  display: grid;
+  gap: 7px;
+  margin-top: 20px;
+  padding: 18px;
+}
+
+:root[data-theme='light'] .doctor-tags {
+  background: #f3f6fb;
+  border-color: #e1e8f1;
+}
+
+.doctor-tags span {
+  background: transparent;
+  border: 0;
+  color: var(--muted-strong);
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 0;
+}
+
+.doctor-meta {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+}
+
+.doctor-meta span,
+.rating-badge {
+  background: var(--rating-bg);
+  border-color: var(--rating-border);
+}
+
+.details-panel {
+  min-height: 0;
+  overflow: hidden;
+  padding: 28px;
+  top: 24px;
+}
+
+.doctor-profile {
+  gap: 16px;
+}
+
+.profile-avatar {
+  background: var(--primary);
+  border: 0;
+  color: #ffffff;
+}
+
+.profile-heading h2 {
+  font-size: 28px;
+  font-weight: 950;
+}
+
+.profile-grid {
+  gap: 10px;
+}
+
+.profile-grid span,
+.slot,
+.appointment-card,
+.appointment-empty,
+.lookup-form {
+  background: color-mix(in srgb, var(--surface-soft) 78%, transparent);
+  border-color: color-mix(in srgb, var(--border) 82%, transparent);
+}
+
+.slots {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.slot {
+  justify-content: flex-start;
+  padding: 0 14px;
+}
+
+.slot.is-selected {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.appointment-form {
+  border-top-color: color-mix(in srgb, var(--border) 78%, transparent);
+}
+
+.appointments-panel {
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  margin-top: 30px;
+  padding: 22px;
+}
+
+.appointments-heading h2 {
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.status.scheduled {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.status.cancelled {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.status.completed {
+  background: color-mix(in srgb, var(--info) 16%, transparent);
+  color: var(--muted-strong);
+}
+
+.toast {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+}
+
+@media (max-width: 1180px) {
+  .app-shell {
+    padding: 22px;
+  }
+
+  .topbar {
+    margin-bottom: 26px;
+  }
+
+  .search-panel {
+    margin-bottom: 24px;
+    max-width: none;
+  }
+
+  .filter-mobile-trigger {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface-soft) 78%, transparent)),
+      var(--glass);
+    border-color: color-mix(in srgb, var(--border) 82%, transparent);
+    box-shadow: var(--shadow-soft);
+    min-height: 58px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .details-panel {
+    position: static;
+  }
+
+  .cards-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .topbar {
+    gap: 18px;
+    padding-top: 4px;
+  }
+
+  .topbar-actions {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .status-pill {
+    justify-content: center;
+    padding-inline: 12px;
+  }
+
+  .brand h1 {
+    font-size: clamp(36px, 12vw, 52px);
+  }
+
+  .top-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .top-tabs a {
+    min-width: 0;
+    padding: 13px 16px;
+  }
+
+  .cards-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card {
+    min-height: 0;
+    padding: 26px 24px;
+  }
+
+  .doctor-meta {
+    position: static;
+  }
+
+  .doctor-main {
+    grid-column: 2 / -1;
+  }
+
+  .details-panel,
+  .appointments-panel,
+  .filters-panel {
+    padding: 18px;
+  }
+
+  .slots {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .appointments-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar-actions,
+  .slots {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-main {
+    grid-column: 1;
+  }
+}
+
+/* Booking modal flow */
+.topbar {
+  margin-bottom: 24px;
+}
+
+.topbar-actions {
+  display: inline-flex;
+  justify-content: center;
+  width: auto;
+}
+
+.workspace {
+  grid-template-columns: 1fr;
+}
+
+.cards-flow {
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+
+.booking-backdrop {
+  align-items: flex-start;
+  background:
+    radial-gradient(circle at 50% 0, color-mix(in srgb, var(--primary) 16%, transparent), transparent 34%),
+    rgba(2, 6, 16, 0.78);
+  backdrop-filter: blur(18px);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 36px 18px;
+  position: fixed;
+  z-index: 30;
+}
+
+.booking-dialog {
+  max-width: 940px;
+  position: relative;
+  width: min(940px, 100%);
+}
+
+.booking-dialog .details-panel {
+  min-height: 0;
+  position: relative;
+  top: auto;
+}
+
+.booking-dialog .doctor-profile {
+  padding-right: 54px;
+}
+
+.booking-close {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+}
+
+/* Desktop filter/sidebar layout */
+.brand {
+  max-width: 980px;
+  width: 100%;
+}
+
+.brand h1 {
+  font-size: clamp(34px, 4.6vw, 58px);
+  text-wrap: balance;
+}
+
+.brand span {
+  text-wrap: balance;
+}
+
+.search-layout {
+  align-items: start;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 310px minmax(0, 1fr);
+}
+
+@media (min-width: 1181px) {
+  .search-layout .filter-mobile-trigger {
+    display: none;
+  }
+
+  .search-layout .search-panel {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    max-width: none;
+    padding: 22px;
+    position: sticky;
+    top: 24px;
+  }
+
+  .search-layout .search-panel .panel-title {
+    display: flex;
+    padding-right: 0;
+  }
+
+  .search-layout .filter-grid,
+  .search-layout .filter-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .search-layout .filter-grid > label,
+  .search-layout .filter-grid .filter-query,
+  .search-layout .filter-actions {
+    grid-column: auto;
+  }
+
+  .search-layout .filter-actions {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 1180px) {
+  .brand h1 {
+    font-size: clamp(34px, 6vw, 46px);
+  }
+
+  .search-layout {
+    display: block;
+  }
+
+  .search-panel.is-open .panel-title {
+    display: flex;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-flow {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .brand h1 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .topbar-actions {
+    display: inline-flex;
+    width: auto;
+  }
+
+  .booking-backdrop {
+    padding: 16px;
+  }
+
+  .booking-dialog .doctor-profile {
+    padding-right: 46px;
+  }
+
+  .cards-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Header and doctor cards polish */
+.topbar {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 76%, transparent), color-mix(in srgb, var(--surface-soft) 54%, transparent)),
+    color-mix(in srgb, var(--page-mid) 84%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  gap: 12px;
+  margin-bottom: 24px;
+  max-width: 1180px;
+  padding: 18px 72px 20px;
+  position: relative;
+}
+
+.topbar-actions {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+
+.brand {
+  gap: 10px;
+}
+
+.brand-mark {
+  flex-basis: 44px;
+  height: 44px;
+  width: 44px;
+}
+
+.brand h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1;
+}
+
+.brand span {
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.cards-flow {
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
+.doctor-card {
+  align-content: space-between;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-soft) 86%, transparent)),
+    var(--surface);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  min-height: 236px;
+  padding: 22px;
+}
+
+.doctor-card::before {
+  height: 4px;
+  inset: 0 0 auto;
+  width: auto;
+}
+
+.doctor-card::after {
+  background: radial-gradient(circle at 80% 0, color-mix(in srgb, var(--primary) 14%, transparent), transparent 34%);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.18s ease;
+}
+
+.doctor-card:hover::after,
+.doctor-card.is-active::after {
+  opacity: 1;
+}
+
+.doctor-card-head {
+  align-items: flex-start;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  position: relative;
+  z-index: 1;
+}
+
+.doctor-card .avatar {
+  align-self: start;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--primary) 22%, transparent);
+  color: #ffffff;
+  flex-basis: 48px;
+  font-size: 14px;
+  height: 48px;
+  width: 48px;
+}
+
+.doctor-card .doctor-main {
+  grid-column: auto;
+}
+
+.doctor-card .doctor-kicker {
+  background: color-mix(in srgb, var(--info) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--info) 16%, var(--border));
+  border-radius: 999px;
+  color: var(--muted-strong);
+  justify-self: start;
+  padding: 5px 9px;
+}
+
+.doctor-card .doctor-main strong {
+  font-size: clamp(22px, 2vw, 29px);
+  line-height: 1.05;
+}
+
+.doctor-card .doctor-tags {
+  background: transparent;
+  border: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.doctor-card .doctor-tags span {
+  background: color-mix(in srgb, var(--surface-soft) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: 8px;
+  color: var(--muted-strong);
+  min-height: 44px;
+  padding: 10px;
+}
+
+.doctor-card .doctor-meta {
+  position: static;
+}
+
+.doctor-card .doctor-action {
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  color: var(--primary);
+  display: flex;
+  font-weight: 950;
+  justify-content: space-between;
+  padding-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1180px) {
+  .topbar {
+    padding: 18px 70px 20px;
+  }
+
+  .brand h1 {
+    font-size: clamp(30px, 5vw, 42px);
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    padding: 16px;
+  }
+
+  .topbar-actions {
+    position: static;
+  }
+
+  .brand h1 {
+    font-size: clamp(29px, 8vw, 38px);
+  }
+
+  .doctor-card {
+    padding: 20px;
+  }
+
+  .doctor-card-head,
+  .doctor-card .doctor-tags {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card .doctor-meta {
+    justify-items: start;
+  }
+}
+
+/* Final app header + doctor cards redesign */
+.topbar {
+  align-items: center;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface-soft) 74%, transparent)),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+  justify-content: space-between;
+  margin: 0 0 24px;
+  max-width: none;
+  min-height: 88px;
+  padding: 16px 22px;
+  text-align: left;
+}
+
+.topbar-actions {
+  flex: 0 0 auto;
+  position: static;
+}
+
+.brand {
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+  max-width: none;
+  min-width: 0;
+  width: auto;
+}
+
+.brand-mark {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 34%, transparent), color-mix(in srgb, var(--info) 20%, transparent)),
+    var(--surface-soft);
+  border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--primary) 16%, transparent);
+  flex: 0 0 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.brand-mark svg {
+  display: block;
+}
+
+.brand p {
+  color: var(--primary);
+  font-size: 12px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.brand h1 {
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 950;
+  line-height: 1.05;
+  max-width: 760px;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  display: block;
+  line-height: 1.25;
+  margin-top: 6px;
+}
+
+.theme-toggle {
+  min-height: 46px;
+}
+
+.doctor-list {
+  min-width: 0;
+}
+
+.section-heading {
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 2.8vw, 40px);
+}
+
+.cards-flow {
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+}
+
+.doctor-card {
+  --card-accent: var(--primary);
+  align-content: stretch;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-soft) 90%, transparent)),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  min-height: 198px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.doctor-card::before {
+  background: linear-gradient(180deg, var(--card-accent), color-mix(in srgb, var(--info) 70%, var(--card-accent)));
+  height: auto;
+  inset: 0 auto 0 0;
+  width: 4px;
+}
+
+.doctor-card::after {
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--primary) 16%, transparent), transparent 36%),
+    linear-gradient(135deg, transparent, color-mix(in srgb, var(--info) 8%, transparent));
+}
+
+.doctor-card:hover {
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.doctor-card.is-active {
+  box-shadow:
+    inset 4px 0 0 var(--primary),
+    0 22px 48px color-mix(in srgb, var(--primary) 14%, transparent);
+}
+
+.doctor-card-head {
+  align-items: start;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+}
+
+.doctor-card .avatar {
+  border-radius: 8px;
+  flex-basis: 56px;
+  font-size: 15px;
+  height: 56px;
+  width: 56px;
+}
+
+.doctor-card .doctor-main {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.doctor-card .doctor-kicker {
+  background: transparent;
+  border: 0;
+  color: var(--primary);
+  font-size: 12px;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.doctor-card .doctor-main strong {
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.06;
+}
+
+.doctor-card .doctor-main small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.doctor-card .doctor-meta span {
+  min-height: 38px;
+  padding: 8px 11px;
+}
+
+.doctor-card .doctor-tags {
+  background: color-mix(in srgb, var(--surface-soft) 66%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  border-radius: 8px;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.doctor-card .doctor-tags span {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+  border-radius: 0;
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  min-height: 54px;
+  padding: 12px;
+}
+
+.doctor-card .doctor-tags span:last-child {
+  border-right: 0;
+}
+
+.doctor-action {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+}
+
+.doctor-card:hover .doctor-action {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+@media (max-width: 1180px) {
+  .topbar {
+    padding: 16px 18px;
+  }
+
+  .brand h1 {
+    font-size: clamp(24px, 4vw, 34px);
+  }
+
+  .cards-flow {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .topbar-actions {
+    order: 2;
+  }
+
+  .brand h1 {
+    font-size: clamp(25px, 7vw, 34px);
+  }
+
+  .cards-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card-head {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .doctor-card .doctor-meta {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .doctor-card .doctor-tags {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card .doctor-tags span {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+  }
+
+  .doctor-card .doctor-tags span:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Alternative doctor profile cards */
+.cards-flow {
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.doctor-card {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, transparent), color-mix(in srgb, var(--surface-soft) 92%, transparent)),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  gap: 18px;
+  min-height: 286px;
+  padding: 0;
+}
+
+.doctor-card::before {
+  background:
+    radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--primary) 42%, transparent), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--info) 18%, transparent), color-mix(in srgb, var(--primary) 12%, transparent));
+  height: 92px;
+  inset: 0 0 auto;
+  width: auto;
+}
+
+.doctor-card::after {
+  display: none;
+}
+
+.doctor-card:hover {
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.24),
+    0 0 0 1px color-mix(in srgb, var(--primary) 22%, transparent);
+  transform: translateY(-3px);
+}
+
+.doctor-card.is-active {
+  box-shadow:
+    0 24px 52px color-mix(in srgb, var(--primary) 18%, rgba(0, 0, 0, 0.24)),
+    0 0 0 1px color-mix(in srgb, var(--primary) 38%, var(--border));
+}
+
+.doctor-card-head {
+  align-items: end;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 56px 18px 0;
+  position: relative;
+}
+
+.doctor-card .avatar {
+  border: 4px solid color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow:
+    0 16px 34px color-mix(in srgb, var(--primary) 24%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--border) 72%, transparent);
+  flex-basis: 62px;
+  font-size: 16px;
+  height: 62px;
+  width: 62px;
+}
+
+.doctor-card .doctor-main {
+  align-self: center;
+}
+
+.doctor-card .doctor-kicker {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--border));
+  border-radius: 999px;
+  color: var(--primary);
+  font-size: 11px;
+  justify-self: start;
+  padding: 5px 9px;
+}
+
+.doctor-card .doctor-main strong {
+  font-size: clamp(22px, 2.1vw, 30px);
+  margin-top: 2px;
+}
+
+.doctor-card .doctor-main small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.doctor-card .doctor-meta {
+  align-self: start;
+  justify-self: end;
+}
+
+.doctor-card .doctor-meta span {
+  background: rgba(10, 15, 28, 0.72);
+  border-color: rgba(255, 193, 90, 0.34);
+  color: #ffffff;
+}
+
+:root[data-theme='light'] .doctor-card .doctor-meta span {
+  background: #ffffff;
+  color: var(--text);
+}
+
+.doctor-card .doctor-tags {
+  background: transparent;
+  border: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 18px;
+}
+
+.doctor-card .doctor-tags span {
+  background: color-mix(in srgb, var(--surface-soft) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: 8px;
+  min-height: 66px;
+  padding: 12px;
+}
+
+.doctor-card .doctor-tags span:last-child,
+.doctor-card .doctor-tags span {
+  border-right: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+}
+
+.doctor-action {
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface-soft));
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--border));
+  border-radius: 8px;
+  color: var(--primary);
+  margin: 0 18px 18px;
+  min-height: 48px;
+}
+
+.doctor-card:hover .doctor-action {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border-color: transparent;
+  color: #ffffff;
+}
+
+@media (max-width: 760px) {
+  .doctor-card {
+    min-height: 0;
+  }
+
+  .doctor-card-head {
+    align-items: start;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .doctor-card .doctor-meta {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .doctor-card .doctor-tags {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card .doctor-tags span {
+    min-height: 52px;
+  }
+}
+
+/* Final darker clinical card style */
+.cards-flow {
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+
+.doctor-card {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-soft) 86%, transparent)),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  gap: 14px;
+  min-height: 0;
+  padding: 18px;
+}
+
+.doctor-card::before {
+  background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--info) 68%, var(--primary)));
+  border-radius: 0 999px 999px 0;
+  height: auto;
+  inset: 18px auto 18px 0;
+  width: 4px;
+}
+
+.doctor-card::after {
+  display: none;
+}
+
+.doctor-card:hover {
+  border-color: color-mix(in srgb, var(--primary) 34%, var(--border));
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 0 0 1px color-mix(in srgb, var(--primary) 14%, transparent);
+  transform: translateY(-2px);
+}
+
+.doctor-card.is-active {
+  border-color: color-mix(in srgb, var(--primary) 44%, var(--border));
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 0 0 1px color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.doctor-card-head {
+  align-items: start;
+  gap: 14px;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  padding: 0;
+}
+
+.doctor-card .avatar {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 86%, #ffffff 14%), var(--primary-hover));
+  border: 1px solid color-mix(in srgb, var(--primary) 46%, var(--border));
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--primary) 18%, transparent);
+  flex-basis: 52px;
+  height: 52px;
+  width: 52px;
+}
+
+.doctor-card .doctor-kicker {
+  background: transparent;
+  border: 0;
+  color: color-mix(in srgb, var(--primary) 88%, #ffffff 12%);
+  font-size: 12px;
+  padding: 0;
+}
+
+.doctor-card .doctor-main strong {
+  font-size: clamp(21px, 1.8vw, 27px);
+  line-height: 1.08;
+}
+
+.doctor-card .doctor-main small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.doctor-card .doctor-meta span {
+  background: color-mix(in srgb, var(--surface-soft) 82%, transparent);
+  border-color: color-mix(in srgb, var(--rating-border) 66%, var(--border));
+  color: var(--text);
+  min-height: 36px;
+}
+
+.doctor-card .doctor-tags {
+  background: transparent;
+  border: 0;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0;
+}
+
+.doctor-card .doctor-tags span,
+.doctor-card .doctor-tags span:last-child {
+  background: color-mix(in srgb, var(--surface-soft) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: 8px;
+  min-height: 52px;
+  padding: 11px;
+}
+
+.doctor-action {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--primary) 36%, var(--border));
+  color: color-mix(in srgb, var(--primary) 88%, #ffffff 12%);
+  margin: 0;
+  min-height: 46px;
+}
+
+.doctor-card:hover .doctor-action {
+  background: color-mix(in srgb, var(--primary) 88%, #07101d 12%);
+  color: #ffffff;
+}
+
+@media (max-width: 760px) {
+  .cards-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card-head {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .doctor-card .doctor-tags {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Alignment fixes */
+.brand {
+  align-items: center;
+}
+
+.brand > div {
+  align-content: center;
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.brand-mark {
+  align-items: center;
+  align-self: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.brand-mark svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.brand p,
+.brand h1,
+.brand span {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.doctor-action {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+  padding: 0 14px;
+}
+
+.doctor-action svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.doctor-list {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.doctor-list .section-heading {
+  background: transparent;
+  border: 0;
+  padding: 0 0 14px;
+}
+
+.doctor-empty-state {
+  align-items: center;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface-soft) 78%, transparent)),
+    var(--surface);
+  border: 1px dashed color-mix(in srgb, var(--border-strong) 78%, transparent);
+  border-radius: 8px;
+  color: var(--muted);
+  display: flex;
+  gap: 14px;
+  min-height: 150px;
+  padding: 24px;
+}
+
+.doctor-empty-state svg {
+  color: var(--primary);
+  flex: 0 0 auto;
+}
+
+.doctor-empty-state strong {
+  color: var(--text);
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.doctor-empty-state span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.doctor-list {
+  background: color-mix(in srgb, var(--surface) 32%, transparent) !important;
+  backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid color-mix(in srgb, var(--border) 56%, transparent) !important;
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12) !important;
+  padding: 18px;
+}
+
+.doctor-list .section-heading {
+  margin-bottom: 18px;
+  padding: 0;
+}
+
+.doctor-list .cards-flow,
+.doctor-list .doctor-empty-state {
+  margin-top: 0;
+}
+
+.doctor-empty-state {
+  background: color-mix(in srgb, var(--surface-soft) 56%, transparent);
+}
